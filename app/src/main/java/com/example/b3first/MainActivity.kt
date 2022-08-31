@@ -1,5 +1,6 @@
 package com.example.b3first
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.EditText
@@ -19,9 +20,13 @@ class MainActivity : AppCompatActivity() {
 
     fun clickHandler(view: View) {
         //var name : String = etName.text.toString()
-        var name = etName.text.toString()
+       var name = etName.text.toString()
 
-        Toast.makeText(this,name,Toast.LENGTH_SHORT).show()
+        var hIntent = Intent(this,HomeActivity::class.java)
+        hIntent.putExtra("nkey",name)
+        startActivity(hIntent)
+
+      //  Toast.makeText(this,name,Toast.LENGTH_SHORT).show()
     }
 
 

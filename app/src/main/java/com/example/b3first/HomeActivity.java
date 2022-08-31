@@ -36,9 +36,24 @@ public class HomeActivity extends AppCompatActivity {
             case R.id.btnAlarm:
             createAlarm("b3 android",20,59);
                 break;
+            case R.id.btnFinish:
+                closeSendData();
+                break;
         }
 
         //Intent  hIntent = new Intent();
+    }
+
+    private void closeSendData() {
+
+        //get the data from edittext
+        String contact = etHome.getText().toString();
+        //send the data to parent activity
+        Intent cIntent = new Intent();
+        cIntent.putExtra("ckey",contact);
+        setResult(RESULT_OK,cIntent);
+        //close this activity
+        finish();
     }
 
     public void createAlarm(String message, int hour, int minutes) {

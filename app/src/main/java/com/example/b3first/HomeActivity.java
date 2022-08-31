@@ -22,10 +22,12 @@ public class HomeActivity extends AppCompatActivity {
         tvHome = findViewById(R.id.tvHome);
 
         //getIntent will give you hIntent which started this activity
-        Bundle bundle = getIntent().getExtras();
-        String name = bundle.getString("nkey");
+        if(getIntent().getExtras() != null) {
+            Bundle bundle = getIntent().getExtras();
+            String name = bundle.getString("nkey");
+            tvHome.setText(name);                                                                    
+        }
 
-        tvHome.setText(name);
     }
 
     public void handleClicks(View view) {

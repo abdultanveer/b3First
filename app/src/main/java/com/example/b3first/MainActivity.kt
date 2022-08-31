@@ -1,6 +1,7 @@
 package com.example.b3first
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import android.widget.EditText
@@ -18,15 +19,27 @@ class MainActivity : AppCompatActivity() {
         etName = findViewById(R.id.etName) // instantiation
     }
 
-    fun clickHandler(view: View) {
-        //var name : String = etName.text.toString()
-       var name = etName.text.toString()
+    fun clickHandler(viewClicked: View) {
+        when(viewClicked.id){
+            R.id.btnHome ->{         startHomeActivity()            }
+            R.id.btnDial -> { startDial()}
+        }
+    }
 
-        var hIntent = Intent(this,HomeActivity::class.java)
-        hIntent.putExtra("nkey",name)
+    private fun startDial() {
+        var dIntent = Intent(Intent.ACTION_DIAL, Uri.parse("tel:98765432"))
+        startActivity(dIntent)
+    }
+
+    private fun startHomeActivity() {
+        //var name : String = etName.text.toString()
+        var name = etName.text.toString()
+
+        var hIntent = Intent(this, HomeActivity::class.java)
+        hIntent.putExtra("nkey", name)
         startActivity(hIntent)
 
-      //  Toast.makeText(this,name,Toast.LENGTH_SHORT).show()
+        //  Toast.makeText(this,name,Toast.LENGTH_SHORT).show()
     }
 
 

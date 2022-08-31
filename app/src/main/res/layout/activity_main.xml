@@ -30,13 +30,24 @@
         app:layout_constraintTop_toBottomOf="@+id/etName" />
 
     <Button
-        android:id="@+id/button"
-        android:onClick="clickHandler"
+        android:id="@+id/btnHome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="18dp"
         android:layout_marginTop="53dp"
+        android:onClick="clickHandler"
         android:text="login"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etPassword" />
+
+    <Button
+        android:id="@+id/btnDial"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="37dp"
+        android:layout_marginBottom="6dp"
+        android:onClick="clickHandler"
+        android:text="dial"
+        app:layout_constraintBottom_toBottomOf="@+id/btnHome"
+        app:layout_constraintStart_toEndOf="@+id/btnHome" />
 </androidx.constraintlayout.widget.ConstraintLayout>

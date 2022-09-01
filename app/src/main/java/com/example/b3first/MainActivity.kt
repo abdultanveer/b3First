@@ -26,7 +26,6 @@ class MainActivity : AppCompatActivity() {
         etName = findViewById(R.id.etName) // instantiation
         conTextView = findViewById(R.id.tvContact)
         Log.i(TAG,"onCreate")
-
     }
 
     override fun onStart() {
@@ -59,6 +58,8 @@ class MainActivity : AppCompatActivity() {
 
 
     fun clickHandler(viewClicked: View) {
+        throw NullPointerException("cog ex thrown")
+
         when(viewClicked.id){
             R.id.btnHome ->{         startHomeActivity()            }
             R.id.btnDial -> { startDial()}

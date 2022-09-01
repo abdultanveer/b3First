@@ -58,7 +58,6 @@ class MainActivity : AppCompatActivity() {
 
 
     fun clickHandler(viewClicked: View) {
-        throw NullPointerException("cog ex thrown")
 
         when(viewClicked.id){
             R.id.btnHome ->{         startHomeActivity()            }
@@ -74,6 +73,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun startHomeActivity() {
         //var name : String = etName.text.toString()
+        var result =  add(10,20)
         var name = etName.text.toString()
         //explicit intent
         var hIntent = Intent(this, HomeActivity::class.java)
@@ -81,6 +81,11 @@ class MainActivity : AppCompatActivity() {
         startActivityForResult(hIntent,123)
 
         //  Toast.makeText(this,name,Toast.LENGTH_SHORT).show()
+    }
+
+    private fun add(fno: Int, sno: Int):Int {
+      //  throw NullPointerException("cog ex thrown")
+        return fno + sno
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, intent: Intent?) {

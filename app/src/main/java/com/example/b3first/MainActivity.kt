@@ -1,5 +1,6 @@
 package com.example.b3first
 
+import android.app.Activity
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -10,6 +11,8 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 
+//androidx -- has all those booklets
+//compat -- backwards compatibility
 
 class MainActivity : AppCompatActivity() {
 

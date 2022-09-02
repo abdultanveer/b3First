@@ -6,10 +6,14 @@
     android:layout_width="wrap_content">
     <LinearLayout
 
-    android:orientation="vertical"
+    android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
-
+    <ImageView
+        android:src="@drawable/ic_baseline_home_24"
+        android:id="@+id/imageview"
+        android:layout_width="30dp"
+        android:layout_height="30dp"/>
     <TextView
 
         android:textSize="20sp"

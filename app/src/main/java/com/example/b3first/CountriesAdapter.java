@@ -41,6 +41,7 @@ public class CountriesAdapter extends RecyclerView.Adapter<CountriesAdapter.Coun
     //this is the box holding the list items
     public class CountriesViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView tvPlank;
+
         public CountriesViewHolder(@NonNull View plank) {
             super(plank);
             plank.setOnClickListener(this);

@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -38,12 +39,20 @@ public class CountriesAdapter extends RecyclerView.Adapter<CountriesAdapter.Coun
     }
 
     //this is the box holding the list items
-    public class CountriesViewHolder extends RecyclerView.ViewHolder {
+    public class CountriesViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView tvPlank;
         public CountriesViewHolder(@NonNull View plank) {
             super(plank);
+            plank.setOnClickListener(this);
             Log.i(TAG,"abdul is finding the textview on the plank bought by virkin");
             tvPlank = plank.findViewById(R.id.tvListItem);
+
+        }
+
+        @Override
+        public void onClick(View view) {
+           String item = tvPlank.getText().toString();
+            Toast.makeText(tvPlank.getContext(), "item clicked--"+item, Toast.LENGTH_SHORT).show();
         }
     }
 }

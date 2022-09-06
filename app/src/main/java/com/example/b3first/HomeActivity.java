@@ -10,7 +10,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class HomeActivity extends AppCompatActivity {
+//havells appliances
+public class HomeActivity extends AppCompatActivity implements View.OnFocusChangeListener {
 
     EditText etHome;
     TextView tvHome;
@@ -21,6 +22,8 @@ public class HomeActivity extends AppCompatActivity {
 
         etHome = findViewById(R.id.etHome);
         tvHome = findViewById(R.id.tvHome);
+
+        etHome.setOnFocusChangeListener(this); //wiring
 
         //getIntent will give you hIntent which started this activity
         if(getIntent().getExtras() != null) {
@@ -63,6 +66,17 @@ public class HomeActivity extends AppCompatActivity {
                 .putExtra(AlarmClock.EXTRA_MINUTES, minutes);
         if (intent.resolveActivity(getPackageManager()) != null) {
             startActivity(intent);
+        }
+    }
+
+    @Override
+    public void onFocusChange(View view, boolean isFocussed) {
+        if(isFocussed){
+            Toast.makeText(this, "focussed", Toast.LENGTH_SHORT).show();
+        }
+        else{
+            Toast.makeText(this, "lost focus", Toast.LENGTH_SHORT).show();
+
         }
     }
 }

@@ -6,17 +6,21 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.provider.AlarmClock;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 //havells appliances
-public class HomeActivity extends AppCompatActivity implements View.OnFocusChangeListener, View.OnClickListener {
+public class HomeActivity extends AppCompatActivity
+        implements View.OnFocusChangeListener, View.OnClickListener, AdapterView.OnItemSelectedListener {
 
     EditText etHome;
     TextView tvHome;
     Button alarmButton;
+    Spinner langsSpinner;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,6 +29,8 @@ public class HomeActivity extends AppCompatActivity implements View.OnFocusChang
         etHome = findViewById(R.id.etHome);
         tvHome = findViewById(R.id.tvHome);
         alarmButton = findViewById(R.id.btnAlarm);
+        langsSpinner = findViewById(R.id.spinnerLanguages);
+        langsSpinner.setOnItemSelectedListener(this);
         
         alarmButton.setOnClickListener(this);
 
@@ -88,5 +94,16 @@ public class HomeActivity extends AppCompatActivity implements View.OnFocusChang
     @Override
     public void onClick(View view) {
         Toast.makeText(this, "alarm button clicked", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> adapterView, View view, int position, long rowId) {
+        String item = adapterView.getItemAtPosition(position).toString();
+        Toast.makeText(this, item +" item was selected", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> adapterView) {
+
     }
 }

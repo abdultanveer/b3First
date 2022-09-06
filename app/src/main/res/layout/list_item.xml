@@ -16,9 +16,7 @@
         android:layout_height="30dp"/>
     <TextView
 
-        android:textSize="20sp"
-        android:textColor="#000"
-        android:textStyle="bold"
+
         android:padding="10dp"
         android:id="@+id/tvListItem"
         android:layout_width="match_parent"

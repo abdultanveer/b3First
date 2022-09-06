@@ -5,6 +5,11 @@
         <item name="android:textSize">24sp</item>
         <item name="android:textStyle">bold</item>
     </style>
+
+    <style name="red" parent="Theme.B3First">
+        <item name="android:textColor">@android:color/holo_red_dark</item>
+
+    </style>
 </resources>
 
     <!--android:textColor="#abc987"

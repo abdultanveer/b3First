@@ -65,7 +65,14 @@ class MainActivity : AppCompatActivity() {
         when(viewClicked.id){
             R.id.btnHome ->{         startHomeActivity()            }
             R.id.btnDial -> { startDial()}
+            R.id.btnTest -> { getSetData()}
         }
+    }
+
+    private fun getSetData() {
+        var name = etName.text.toString()
+        conTextView.setText(name)
+
     }
 
     private fun startDial() {

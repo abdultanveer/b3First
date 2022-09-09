@@ -9,8 +9,10 @@ import android.widget.ProgressBar;
 
 public class DownloadTask extends AsyncTask<String,Integer, Bitmap> {
     public static String TAG = DownloadTask.class.getSimpleName();
-
-   public  DownloadTask(ProgressBar mProgressBar){}
+    ProgressBar progressBar;
+   public  DownloadTask(ProgressBar mProgressBar){
+       progressBar = mProgressBar;
+   }
 
 
     @Override//will run on the background worker thread
@@ -18,5 +20,11 @@ public class DownloadTask extends AsyncTask<String,Integer, Bitmap> {
         Log.i(TAG,"doInBackground--"+url[0]);
         publishProgress(50);
         return null;
+    }
+
+    @Override //onProgressUpdate runs on the ui thread
+    protected void onProgressUpdate(Integer... values) {
+        super.onProgressUpdate(values);
+        progressBar.setProgress(values[0]);
     }
 }

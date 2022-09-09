@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.EditText
+import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -16,6 +17,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var etName: EditText //declaration
     lateinit var conTextView: TextView
     var TAG = MainActivity::class.java.simpleName
+    lateinit var progressBar: ProgressBar
 
     /**
      * memory is allocated for the activity
@@ -25,35 +27,11 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         etName = findViewById(R.id.etName) // instantiation
         conTextView = findViewById(R.id.tvContact)
+        progressBar = findViewById(R.id.progressBar)
         Log.i(TAG,"onCreate")
     }
 
-    override fun onStart() {
-        super.onStart()
-        Log.i(TAG,"onstart")
-    }
 
-    override fun onResume() {
-        super.onResume()
-        Log.v(TAG,"onResume--restore the state")
-
-    }
-
-    override fun onPause() {
-        super.onPause()
-        Log.w(TAG,"onPause-- save state app")
-    }
-
-    override fun onStop() {
-        super.onStop()
-        Log.d(TAG,"onStop")
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        Log.e(TAG,"onDestroy-- release the resources")
-
-    }
 
 
 
@@ -62,7 +40,13 @@ class MainActivity : AppCompatActivity() {
         when(viewClicked.id){
             R.id.btnHome ->{         startHomeActivity()            }
             R.id.btnDial -> { startDial()}
+            R.id.btnDownload -> {downloadImage()}
         }
+    }
+
+    private fun downloadImage() {
+        var downloadTask = DownloadTask(progressBar)
+        downloadTask.execute("https://someimage.com")
     }
 
     private fun startDial() {

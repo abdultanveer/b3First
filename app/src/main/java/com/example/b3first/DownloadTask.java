@@ -18,7 +18,14 @@ public class DownloadTask extends AsyncTask<String,Integer, Bitmap> {
     @Override//will run on the background worker thread
     protected Bitmap doInBackground(String... url) {
         Log.i(TAG,"doInBackground--"+url[0]);
-        publishProgress(50);
+        for(int i=0; i<100;i++) {
+            try {
+                Thread.sleep(100);
+                publishProgress(i);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
         return null;
     }
 

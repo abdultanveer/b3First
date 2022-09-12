@@ -1,6 +1,7 @@
 package com.example.b3first
 
 import android.content.Intent
+import android.content.IntentFilter
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
@@ -18,6 +19,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var conTextView: TextView
     var TAG = MainActivity::class.java.simpleName
     lateinit var progressBar: ProgressBar
+    lateinit var smsReceiver: SmsReceiver
 
     /**
      * memory is allocated for the activity
@@ -31,6 +33,22 @@ class MainActivity : AppCompatActivity() {
         Log.i(TAG,"onCreate")
     }
 
+    override fun onStart() {
+        super.onStart()
+        //register in activity
+        smsReceiver = SmsReceiver()
+        var intentFilter = IntentFilter()
+        intentFilter.addAction("android.provider.Telephony.SMS_RECEIVED")
+        //intentFilter.addCategory()
+        registerReceiver(smsReceiver,intentFilter)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        //unregister broadcastreciever
+        unregisterReceiver(smsReceiver)
+
+    }
 
 
 

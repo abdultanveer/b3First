@@ -41,7 +41,21 @@ class MainActivity : AppCompatActivity() {
             R.id.btnHome ->{         startHomeActivity()            }
             R.id.btnDial -> { startDial()}
             R.id.btnDownload -> {downloadImage()}
+            R.id.btnCal -> {openCalendar()}
+            R.id.btnIntent -> { handleIntent()}
         }
+    }
+
+    private fun handleIntent() {
+        var mIntent = Intent(Intent.ACTION_VIEW,Uri.parse("http:yahoo.com"))
+                startActivity(mIntent)
+
+        //"tel:12345678"))
+    }
+
+    private fun openCalendar() {
+        var cIntent = Intent("com.cognizant.abdul")
+        startActivity(cIntent)
     }
 
     private fun downloadImage() {

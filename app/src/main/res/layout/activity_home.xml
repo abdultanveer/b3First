@@ -44,8 +44,18 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="handleClicks"
-        android:text="alarm"
+        android:text="get author"
         app:layout_constraintBaseline_toBaselineOf="@+id/btnFinish"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tvAuthor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="36dp"
+        android:text="TextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnFinish" />
 </androidx.constraintlayout.widget.ConstraintLayout>

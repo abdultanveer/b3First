@@ -13,7 +13,7 @@ import android.widget.Toast;
 public class HomeActivity extends AppCompatActivity {
 
     EditText etHome;
-    TextView tvHome;
+    TextView tvHome,tvAuthor;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,6 +21,7 @@ public class HomeActivity extends AppCompatActivity {
 
         etHome = findViewById(R.id.etHome);
         tvHome = findViewById(R.id.tvHome);
+        tvAuthor= findViewById(R.id.tvAuthor);
 
         //getIntent will give you hIntent which started this activity
         if(getIntent().getExtras() != null) {
@@ -34,7 +35,8 @@ public class HomeActivity extends AppCompatActivity {
     public void handleClicks(View viewClicked) {
         switch (viewClicked.getId()){
             case R.id.btnAlarm:
-            createAlarm("b3 android",20,59);
+           // createAlarm("b3 android",20,59);
+                searchBooks();
                 break;
             case R.id.btnFinish:
                 closeSendData();
@@ -65,4 +67,11 @@ public class HomeActivity extends AppCompatActivity {
             startActivity(intent);
         }
     }
+
+
+   public void searchBooks(){
+       String bookName = etHome.getText().toString();
+       new FetchBook(tvHome,tvAuthor).execute(bookName);
+
+   }
 }

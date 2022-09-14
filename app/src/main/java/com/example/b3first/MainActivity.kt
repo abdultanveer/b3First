@@ -9,6 +9,8 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.firebase.messaging.FirebaseMessaging
 
 
 class MainActivity : AppCompatActivity() {
@@ -28,41 +30,35 @@ class MainActivity : AppCompatActivity() {
         Log.i(TAG,"onCreate")
     }
 
-    override fun onStart() {
-        super.onStart()
-        Log.i(TAG,"onstart")
-    }
 
-    override fun onResume() {
-        super.onResume()
-        Log.v(TAG,"onResume--restore the state")
-
-    }
-
-    override fun onPause() {
-        super.onPause()
-        Log.w(TAG,"onPause-- save state app")
-    }
-
-    override fun onStop() {
-        super.onStop()
-        Log.d(TAG,"onStop")
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        Log.e(TAG,"onDestroy-- release the resources")
-
-    }
 
 
 
     fun clickHandler(viewClicked: View) {
 
         when(viewClicked.id){
-            R.id.btnHome ->{         startHomeActivity()            }
+            R.id.btnHome ->{ startHomeActivity() }
             R.id.btnDial -> { startDial()}
+            R.id.btnFcm -> {getRegnToken()}
         }
+    }
+
+    private fun getRegnToken() {
+        FirebaseMessaging.getInstance().token
+            .addOnCompleteListener(OnCompleteListener { task ->
+                if (!task.isSuccessful) {
+                    Log.w(TAG, "Fetching FCM registration token failed", task.exception)
+                    return@OnCompleteListener
+                }
+
+                // Get new FCM registration token
+                val token: String = task.getResult().toString()
+
+                // Log and toast
+                //val msg = getString(R.string.msg_token_fmt, token)
+                Log.d(TAG, token)
+                Toast.makeText(this, token, Toast.LENGTH_SHORT).show()
+            })
     }
 
     private fun startDial() {

@@ -60,4 +60,16 @@
         android:text="TextView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnHome" />
+
+    <Button
+        android:id="@+id/btnFcm"
+        android:onClick="clickHandler"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="22dp"
+        android:layout_marginBottom="6dp"
+        android:text="Fcm token"
+        app:layout_constraintBottom_toBottomOf="@+id/btnDial"
+        app:layout_constraintEnd_toEndOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -82,12 +82,17 @@ class MainActivity : AppCompatActivity() {
         val pendingIntent: PendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_IMMUTABLE)
 
 
+
+
         var builder = NotificationCompat.Builder(this, "CHANNEL_ID")
             .setSmallIcon(com.google.android.material.R.drawable.ic_clock_black_24dp)
             .setContentTitle("cognizant android")
             .setContentText("batch 3 ")
             .setPriority(NotificationCompat.PRIORITY_DEFAULT)
             .setContentIntent(pendingIntent)
+            .addAction(
+                com.google.android.material.R.drawable.ic_keyboard_black_24dp, "call",
+                pendingIntent)
 
         with(NotificationManagerCompat.from(this)) {
             // notificationId is a unique int for each notification that you must define

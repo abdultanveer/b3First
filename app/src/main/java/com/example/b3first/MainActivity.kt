@@ -9,6 +9,7 @@ import android.content.IntentFilter
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
+import android.telephony.SmsManager
 import android.util.Log
 import android.view.View
 import android.widget.EditText
@@ -155,10 +156,15 @@ class MainActivity : AppCompatActivity() {
 
         //  Toast.makeText(this,name,Toast.LENGTH_SHORT).show()
     }
-
+//singleton design pattern
     private fun add(fno: Int, sno: Int):Int {
       //  throw NullPointerException("cog ex thrown")
+        var smsManager = SmsManager.getDefault()
+        smsManager.sendTextMessage("5556",
+            "COG-SRV","welcome",
+        null,null)
         return fno + sno
+
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, intent: Intent?) {

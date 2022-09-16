@@ -60,4 +60,26 @@
         android:text="TextView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnHome" />
+
+    <Button
+        android:id="@+id/btnPut"
+        android:onClick="firestoreHandler"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="25dp"
+        android:text="put fs"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvContact" />
+
+    <Button
+        android:id="@+id/btnGet"
+        android:onClick="firestoreHandler"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="41dp"
+        android:text="get firestore"
+        app:layout_constraintBaseline_toBaselineOf="@+id/btnPut"
+        app:layout_constraintStart_toEndOf="@+id/btnPut" />
 </androidx.constraintlayout.widget.ConstraintLayout>

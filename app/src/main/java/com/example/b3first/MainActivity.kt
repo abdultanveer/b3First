@@ -9,11 +9,14 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 
 
 class MainActivity : AppCompatActivity() {
 
     lateinit var etName: EditText //declaration
+    lateinit var tvContact: TextView
     lateinit var etPassword:EditText
     lateinit var conTextView: TextView
     var TAG = MainActivity::class.java.simpleName
@@ -27,6 +30,7 @@ class MainActivity : AppCompatActivity() {
         etName = findViewById(R.id.etName) // instantiation
         etPassword = findViewById(R.id.etPassword)
         conTextView = findViewById(R.id.tvContact)
+        tvContact = findViewById(R.id.tvContact)
         Log.i(TAG,"onCreate")
     }
 
@@ -102,6 +106,48 @@ class MainActivity : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, intent)
         var contact = intent?.extras?.getString("ckey")
         conTextView.text = contact
+    }
+
+    fun firestoreHandler(view: View) {
+        when(view.id){
+            R.id.btnPut ->{ putFirestore()}
+            R.id.btnGet->{ getDataFirestore()}
+        }
+    }
+
+    private fun getDataFirestore() {
+        val db = Firebase.firestore
+        db.collection("users")
+            .get()
+            .addOnSuccessListener { result ->
+                for (document in result) {
+                    Log.d(TAG, "${document.id} => ${document.data}")
+                }
+            }
+            .addOnFailureListener { exception ->
+                Log.w(TAG, "Error getting documents.", exception)
+            }
+    }
+
+    private fun putFirestore() {
+        var name = etName.text.toString()
+        var pass = etPassword.text.toString()
+
+        val db = Firebase.firestore
+        val user = hashMapOf(
+            "first" to name,
+            "last" to pass,
+        )
+
+// Add a new document with a generated ID
+        db.collection("users")
+            .add(user)
+            .addOnSuccessListener { documentReference ->
+                Log.d(TAG, "DocumentSnapshot added with ID: ${documentReference.id}")
+            }
+            .addOnFailureListener { e ->
+                Log.w(TAG, "Error adding document", e)
+            }
     }
 
 

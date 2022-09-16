@@ -65,4 +65,17 @@ public class HomeActivity extends AppCompatActivity {
             startActivity(intent);
         }
     }
+
+    public void serviceHandler(View view) {
+        Intent serviceIntent = new Intent(HomeActivity.this,MyService.class);
+        switch (view.getId()){
+            case R.id.btnStart:
+                serviceIntent.putExtra("filename","mymusic.mp3");
+                startService(serviceIntent);
+                break;
+            case  R.id.btnStop:
+                stopService(serviceIntent);
+                break;
+        }
+    }
 }

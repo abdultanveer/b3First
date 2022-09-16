@@ -16,19 +16,21 @@
         android:theme="@style/Theme.B3First"
         tools:targetApi="31">
 
+        <service android:name=".MyService" android:exported="true"/>
+
         <activity
             android:name=".HomeActivity"
             android:exported="true" >
-
-        </activity>
-        <activity
-            android:name=".MainActivity"
-            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+
         </activity>
         <receiver android:name=".SmsReceiver" android:exported="true">
             <intent-filter >

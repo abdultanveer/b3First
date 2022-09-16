@@ -48,4 +48,26 @@
         app:layout_constraintBaseline_toBaselineOf="@+id/btnFinish"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btnStart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:onClick="serviceHandler"
+        android:text="start"
+        app:layout_constraintTop_toBottomOf="@id/btnAlarm"
+        tools:layout_editor_absoluteX="22dp" />
+
+    <Button
+        android:id="@+id/btnStop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="37dp"
+        android:layout_marginTop="4dp"
+        android:onClick="serviceHandler"
+        android:text="stop"
+        app:layout_constraintStart_toEndOf="@+id/btnStart"
+        app:layout_constraintTop_toTopOf="@+id/btnStart" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

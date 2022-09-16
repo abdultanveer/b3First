@@ -2,9 +2,10 @@ package com.example.b3first
 
 import android.app.Service
 import android.content.Intent
+import android.media.MediaPlayer
 import android.os.IBinder
 import android.util.Log
-
+//
 class MyService : Service() {
 
     override fun onCreate() {
@@ -15,7 +16,8 @@ class MyService : Service() {
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
          super.onStartCommand(intent, flags, startId)
         Log.i(TAG , "service started--"+intent?.getStringExtra("filename"))
-
+        var mediaPlayer = MediaPlayer.create(this,R.raw.mymusic)
+        mediaPlayer.start()
         return START_STICKY
     }
 

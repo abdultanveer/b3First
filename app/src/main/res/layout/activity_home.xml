@@ -70,4 +70,13 @@
         app:layout_constraintStart_toEndOf="@+id/btnStart"
         app:layout_constraintTop_toTopOf="@+id/btnStart" />
 
+    <Button
+        android:id="@+id/btnBind"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="serviceHandler"
+        android:text="bind"
+        tools:layout_editor_absoluteX="276dp"
+        tools:layout_editor_absoluteY="234dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

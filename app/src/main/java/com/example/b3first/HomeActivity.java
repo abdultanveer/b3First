@@ -2,16 +2,20 @@ package com.example.b3first;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.ComponentName;
 import android.content.Intent;
+import android.content.ServiceConnection;
 import android.os.Bundle;
+import android.os.IBinder;
 import android.provider.AlarmClock;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class HomeActivity extends AppCompatActivity {
-
+    public static String TAG =HomeActivity.class.getSimpleName();
     EditText etHome;
     TextView tvHome;
     @Override
@@ -76,6 +80,29 @@ public class HomeActivity extends AppCompatActivity {
             case  R.id.btnStop:
                 stopService(serviceIntent);
                 break;
+            case R.id.btnBind:
+                bindService(serviceIntent,serviceConnection,BIND_AUTO_CREATE);
+                break;
         }
     }
+
+
+
+    ServiceConnection serviceConnection = new ServiceConnection() {
+      //  MyService myService = new MyService();//creating a service - setting catering service
+        MyService myService;
+        @Override
+        public void onServiceConnected(ComponentName componentName, IBinder binder) {
+            MyService.LocalBinder myLocalBinder = (MyService.LocalBinder) binder;
+            myService = myLocalBinder.getService();
+            int result = myService.add(888,999);
+            Log.i(TAG,"result ="+ result);
+
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName componentName) {
+
+        }
+    };
 }

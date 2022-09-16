@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity
 class MainActivity : AppCompatActivity() {
 
     lateinit var etName: EditText //declaration
+    lateinit var etPassword:EditText
     lateinit var conTextView: TextView
     var TAG = MainActivity::class.java.simpleName
 
@@ -24,37 +25,46 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         etName = findViewById(R.id.etName) // instantiation
+        etPassword = findViewById(R.id.etPassword)
         conTextView = findViewById(R.id.tvContact)
         Log.i(TAG,"onCreate")
     }
 
-    override fun onStart() {
-        super.onStart()
-        Log.i(TAG,"onstart")
+    override fun onPause() {
+        super.onPause()
+        saveData()
+    }
+
+    private fun saveData() {
+        //get the data from the edittexts
+        var name = etName.text.toString();
+        var password = etPassword.text.toString()
+        //create a file
+        var sharedPreferences = getSharedPreferences("cogsharedprefs", MODE_PRIVATE)
+        //open the file in edit mode
+        var editor =  sharedPreferences.edit()
+        //write to the file
+        editor.putString("nkey",name)
+        editor.putString("pkey",password)
+        //save the file
+        editor.apply()
     }
 
     override fun onResume() {
         super.onResume()
-        Log.v(TAG,"onResume--restore the state")
-
+        restoreData()
     }
 
-    override fun onPause() {
-        super.onPause()
-        Log.w(TAG,"onPause-- save state app")
+    private fun restoreData() {
+        //open the file
+        var sharedPreferences = getSharedPreferences("cogsharedprefs", MODE_PRIVATE)
+        //read from the file
+        var name = sharedPreferences.getString("nkey","")
+        var pass = sharedPreferences.getString("pkey","")
+        //put the data into the edittexts
+        etName.setText(name)
+        etPassword.setText(pass)
     }
-
-    override fun onStop() {
-        super.onStop()
-        Log.d(TAG,"onStop")
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        Log.e(TAG,"onDestroy-- release the resources")
-
-    }
-
 
 
     fun clickHandler(viewClicked: View) {

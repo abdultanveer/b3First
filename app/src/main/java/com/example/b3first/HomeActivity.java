@@ -2,11 +2,17 @@ package com.example.b3first;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.ContentValues;
 import android.content.Intent;
+import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
 import android.provider.AlarmClock;
 import android.view.View;
+import android.widget.CursorAdapter;
 import android.widget.EditText;
+import android.widget.ListView;
+import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,6 +35,20 @@ public class HomeActivity extends AppCompatActivity {
             tvHome.setText(name);
         }
 
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Uri uriSms = Uri.parse("content://sms/inbox");
+        Cursor cursor = getContentResolver().query(uriSms, null,null,null,null);
+        ListView cpListView = findViewById(R.id.cpListview);
+        String[] columnNames = new String[]{"body","address"};
+        int[] textviews = new int[]{android.R.id.text1,android.R.id.text2};
+        CursorAdapter cursorAdapter =
+                new SimpleCursorAdapter(this, android.R.layout.simple_list_item_2,
+                        cursor,columnNames,textviews);
+        cpListView.setAdapter(cursorAdapter);
     }
 
     public void handleClicks(View viewClicked) {
@@ -65,4 +85,12 @@ public class HomeActivity extends AppCompatActivity {
             startActivity(intent);
         }
     }
+
+  /*  public void insertContentprovider(View view) {
+        Uri uriSms = Uri.parse("content://sync.todo/entry");
+        ContentValues values = new ContentValues();
+        values.put("title","b3first title");
+        values.put("subtitle","b3first subtitle");
+        getContentResolver().insert(uriSms,values);
+    }*/
 }

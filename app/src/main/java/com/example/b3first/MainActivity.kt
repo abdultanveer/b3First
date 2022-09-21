@@ -9,6 +9,7 @@ import android.widget.EditText
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.b3first.database.DbAccessObj
+import com.example.b3first.database.FeedReaderContract.FeedEntry
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
@@ -169,6 +170,31 @@ class MainActivity : AppCompatActivity() {
         var title = etName.text.toString()
         var subtitle = etPassword.text.toString()
         entryDao.createRow(title,subtitle)
+    }
+
+    fun handleContentprovider(view: View) {
+        when(view.id){
+            R.id.btnInsertCp -> { insertCp()}
+            R.id.btnGetCp -> { getCp()}
+        }
+    }
+
+    private fun insertCp() {
+        TODO("Not yet implemented")
+    }
+
+    private fun getCp() {
+        val uriSms = Uri.parse("content://cognizant.todo/entry")
+        var cursor = contentResolver.query(uriSms,null,null,null,null,null)
+        cursor?.moveToLast()
+
+        val titleIndex = cursor!!.getColumnIndexOrThrow(FeedEntry.COLUMN_NAME_TITLE)
+        val subtitleIndex = cursor!!.getColumnIndexOrThrow(FeedEntry.COLUMN_NAME_SUBTITLE)
+
+        val result = cursor.getString(titleIndex)+"\n"+cursor.getString(subtitleIndex)
+        Log.i(TAG, "insertCp: result ="+ result)
+
+
     }
 
 

@@ -107,4 +107,27 @@
         app:layout_constraintBottom_toTopOf="@+id/tvContact"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnInsertCp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="33dp"
+        android:layout_marginEnd="15dp"
+        android:text="insert cp"
+        android:onClick="handleContentprovider"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnRetreive" />
+
+    <Button
+        android:id="@+id/btnGetCp"
+        android:onClick="handleContentprovider"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="22dp"
+        android:text="get cp"
+        app:layout_constraintStart_toStartOf="@+id/btnInsertCp"
+        app:layout_constraintTop_toBottomOf="@+id/btnInsertCp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

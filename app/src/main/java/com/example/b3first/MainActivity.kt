@@ -7,8 +7,8 @@ import android.util.Log
 import android.view.View
 import android.widget.EditText
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.b3first.database.DbAccessObj
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
@@ -19,6 +19,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var tvContact: TextView
     lateinit var etPassword:EditText
     lateinit var conTextView: TextView
+    lateinit var entryDao : DbAccessObj
     var TAG = MainActivity::class.java.simpleName
 
     /**
@@ -32,6 +33,8 @@ class MainActivity : AppCompatActivity() {
         conTextView = findViewById(R.id.tvContact)
         tvContact = findViewById(R.id.tvContact)
         Log.i(TAG,"onCreate")
+        entryDao = DbAccessObj(this)
+        entryDao.openDb()
     }
 
     override fun onPause() {
@@ -148,6 +151,24 @@ class MainActivity : AppCompatActivity() {
             .addOnFailureListener { e ->
                 Log.w(TAG, "Error adding document", e)
             }
+    }
+
+    fun dbHandler(view: View) {
+        when(view.id){
+            R.id.btnCommit-> {saveDb()}
+            R.id.btnRetreive -> {retreiveDb()}
+        }
+    }
+
+    private fun retreiveDb() {
+      var entry:String = entryDao.readRow()
+        tvContact.text = entry
+    }
+
+    private fun saveDb() {
+        var title = etName.text.toString()
+        var subtitle = etPassword.text.toString()
+        entryDao.createRow(title,subtitle)
     }
 
 

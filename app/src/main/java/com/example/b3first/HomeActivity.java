@@ -40,6 +40,9 @@ public class HomeActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
+
+
+
         Uri uriSms = Uri.parse("content://sms/inbox");
         Cursor cursor = getContentResolver().query(uriSms, null,null,null,null);
         ListView cpListView = findViewById(R.id.cpListview);

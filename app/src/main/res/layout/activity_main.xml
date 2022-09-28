@@ -13,7 +13,7 @@
         android:layout_marginStart="17dp"
         android:layout_marginTop="70dp"
         android:ems="10"
-        android:hint="@string/enter_name"
+        android:hint="enter name"
         android:inputType="textPersonName"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -25,21 +25,18 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="28dp"
         android:ems="10"
-        android:hint="@string/enter_password"
         android:inputType="numberPassword"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etName" />
 
     <Button
         android:id="@+id/btnHome"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="18dp"
         android:layout_marginTop="53dp"
-        android:layout_marginEnd="161dp"
         android:onClick="clickHandler"
         android:text="login"
-        app:layout_constraintEnd_toStartOf="@+id/btnTest"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etPassword" />
 
@@ -63,16 +60,4 @@
         android:text="TextView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnHome" />
-
-    <Button
-        android:id="@+id/btnTest"
-        android:onClick="clickHandler"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="6dp"
-        android:layout_marginEnd="38dp"
-        android:text="test"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btnHome"
-        app:layout_constraintTop_toTopOf="@+id/btnDial" />
 </androidx.constraintlayout.widget.ConstraintLayout>

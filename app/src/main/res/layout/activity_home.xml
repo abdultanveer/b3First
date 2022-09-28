@@ -14,7 +14,7 @@
         android:layout_marginTop="62dp"
         android:ems="10"
         android:hint="enter contact details"
-        android:inputType="phone"
+        android:inputType="textPersonName"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -43,67 +43,9 @@
         android:id="@+id/btnAlarm"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
+        android:onClick="handleClicks"
         android:text="alarm"
         app:layout_constraintBaseline_toBaselineOf="@+id/btnFinish"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
-
-    <EditText
-        android:id="@+id/editTextTextPersonName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="23dp"
-        android:layout_marginTop="42dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Name"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnFinish" />
-
-    <Spinner
-        android:id="@+id/spinnerLanguages"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="1dp"
-        android:layout_marginTop="57dp"
-        android:layout_marginEnd="1dp"
-        android:entries="@array/languages"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
-
-    <TextView
-        android:id="@+id/textView"
-        style="@style/myfontstyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="33dp"
-        android:text="TextView"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinnerLanguages" />
-
-    <TextView
-        android:id="@+id/textView2"
-        style="@style/myfontstyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
-        android:layout_marginEnd="153dp"
-        android:text="TextView"
-        app:layout_constraintEnd_toEndOf="@+id/spinnerLanguages"
-        app:layout_constraintTop_toBottomOf="@+id/spinnerLanguages" />
-
-    <TextView
-        android:id="@+id/textView3"
-        style="@style/red"
-        android:textColor="#123ccc"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="48dp"
-        android:text="TextView"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
 </androidx.constraintlayout.widget.ConstraintLayout>

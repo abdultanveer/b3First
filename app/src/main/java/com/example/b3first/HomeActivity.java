@@ -6,21 +6,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.provider.AlarmClock;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-//havells appliances
-public class HomeActivity extends AppCompatActivity
-        implements View.OnFocusChangeListener, View.OnClickListener, AdapterView.OnItemSelectedListener {
+public class HomeActivity extends AppCompatActivity {
 
     EditText etHome;
     TextView tvHome;
-    Button alarmButton;
-    Spinner langsSpinner;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,13 +21,6 @@ public class HomeActivity extends AppCompatActivity
 
         etHome = findViewById(R.id.etHome);
         tvHome = findViewById(R.id.tvHome);
-        alarmButton = findViewById(R.id.btnAlarm);
-        langsSpinner = findViewById(R.id.spinnerLanguages);
-        langsSpinner.setOnItemSelectedListener(this);
-        
-        alarmButton.setOnClickListener(this);
-
-        etHome.setOnFocusChangeListener(this); //wiring
 
         //getIntent will give you hIntent which started this activity
         if(getIntent().getExtras() != null) {
@@ -78,32 +64,5 @@ public class HomeActivity extends AppCompatActivity
         if (intent.resolveActivity(getPackageManager()) != null) {
             startActivity(intent);
         }
-    }
-
-    @Override
-    public void onFocusChange(View view, boolean isFocussed) {
-        if(isFocussed){
-            Toast.makeText(this, "focussed", Toast.LENGTH_SHORT).show();
-        }
-        else{
-            Toast.makeText(this, "lost focus", Toast.LENGTH_SHORT).show();
-
-        }
-    }
-
-    @Override
-    public void onClick(View view) {
-        Toast.makeText(this, "alarm button clicked", Toast.LENGTH_SHORT).show();
-    }
-
-    @Override
-    public void onItemSelected(AdapterView<?> adapterView, View view, int position, long rowId) {
-        String item = adapterView.getItemAtPosition(position).toString();
-        Toast.makeText(this, item +" item was selected", Toast.LENGTH_SHORT).show();
-    }
-
-    @Override
-    public void onNothingSelected(AdapterView<?> adapterView) {
-
     }
 }

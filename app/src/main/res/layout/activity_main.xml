@@ -60,4 +60,15 @@
         android:text="TextView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnHome" />
+
+    <com.example.b3first.views.DialView
+        android:id="@+id/custom_dial"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+      app:layout_constraintTop_toBottomOf="@id/tvContact"
+        app:fanColor1="#FFEB3B"
+        app:fanColor2="#CDDC39"
+        app:fanColor3="#009688"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

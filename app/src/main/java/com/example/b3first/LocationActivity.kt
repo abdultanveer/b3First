@@ -24,6 +24,9 @@ var MY_PERMISSIONS_REQUEST_LOCATION= 123
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
         val myWebView: WebView = findViewById(R.id.webView)
 
+        var a: String? = "abc" // Regular initialization means non-null by default
+        a = null
+
         val unencodedHtml =
             "<html><body>'%23' is the percent code for ‘#‘ </body></html>";
         val encodedHtml = Base64.encodeToString(unencodedHtml.toByteArray(), Base64.NO_PADDING)
